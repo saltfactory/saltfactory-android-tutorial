@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">sf-kakao-demo</string>
+    <string name="kakao_app_key"></string>
+    <string name="kakao_scheme"></string>
+    <string name="kakaolink_host">kakolink</string>
+</resources>
+
