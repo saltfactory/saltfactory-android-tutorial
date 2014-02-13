@@ -2,17 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-        >
-    <!--<TextView-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Hello World, MyActivity"-->
-            <!--/>-->
+              android:layout_height="fill_parent">
 
+    <!-- 카카오링크 테스트 버튼 -->
     <Button android:id="@+id/sf_button_kakao_link"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="카카오링크 테스트"/>
+
+    <!-- 카카오스토리 프로파일 테스트 버튼 -->
+    <Button android:id="@+id/sf_button_kakaostory_profile" android:layout_width="fill_parent"
+            android:layout_height="wrap_content" android:text="카카오스토리 프로파일"/>
+
+    <!-- 카카오스토리 포스팅 테스트 버튼 -->
+    <Button android:id="@+id/sf_button_kakaostory_post" android:layout_width="fill_parent"
+            android:layout_height="wrap_content" android:text="카카오스토리 포스팅"/>
+
+    <!-- 카카오 SDK 로그아웃 버튼 -->
+    <Button android:id="@+id/sf_button_kakao_logout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="로그아웃"/>
+
 </LinearLayout>
 

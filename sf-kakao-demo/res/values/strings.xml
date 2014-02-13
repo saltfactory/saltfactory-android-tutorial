@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">sf-kakao-demo</string>
-    <string name="kakao_app_key"></string>
-    <string name="kakao_scheme"></string>
+
+    <string name="sf_app_name">saltfactory 카카오 SDK 데모</string>
+
+    <string name="kakao_app_key">앱키</string>
+    <string name="kakao_scheme">kakao앱키</string>
+    <string name="kakaostory_host">kakaostory</string>
     <string name="kakaolink_host">kakolink</string>
 </resources>
 

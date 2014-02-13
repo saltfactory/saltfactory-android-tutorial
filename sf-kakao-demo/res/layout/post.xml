@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:weightSum="1">
+
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <!-- 카카오스토리에 포스팅할 내용을 적는 글상자 -->
+        <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="200dp"
+                android:inputType="textMultiLine|textNoSuggestions"
+                android:id="@+id/sf_edittext_content" android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true" android:gravity="top" android:autoText="false"
+                android:autoLink="none" android:scrollHorizontally="false"/>
+
+        <!-- 내 앨범에서 선택한 사진을 미리보는 이미지뷰 -->
+        <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/sf_imageview_thumb"
+                android:layout_alignBottom="@+id/sf_button_post" android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+
+        <!-- 카카오스토리에 포스팅하는 버튼 -->
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="포스팅"
+                android:id="@+id/sf_button_post"
+                android:layout_below="@+id/sf_edittext_content" android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
+</LinearLayout>

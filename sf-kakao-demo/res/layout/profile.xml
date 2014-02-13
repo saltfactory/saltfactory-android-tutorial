@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    
+    <!-- 카카오스토리 대문화면(배경화면) 사진을 보여줄 이미지뷰 -->
+    <ImageView android:id="@+id/sf_imageview_background" android:layout_width="fill_parent"
+               android:layout_height="fill_parent" android:layout_alignParentTop="true"/>
+
+    <!-- 카카오스토리 프로파일 사진을 보여줄 이미지뷰-->
+    <ImageView android:id="@+id/sf_imageview_profile" android:layout_width="120dp"
+               android:layout_height="120dp" android:layout_alignParentTop="true" android:layout_margin="20dp"/>
+
+    <!-- 카카오스토리 닉네임을 보여줄 텍스트뷰-->
+    <TextView android:id="@+id/sf_textview_nickname" android:layout_width="fill_parent"
+              android:layout_height="wrap_content" android:text="닉네임 : "
+              android:layout_below="@id/sf_imageview_profile" android:layout_marginLeft="10dp"/>
+
+    <!-- 카카오스토리 생일을 보여줄 텍스트뷰-->
+    <TextView android:id="@+id/sf_textview_birthday" android:layout_width="fill_parent"
+              android:layout_height="wrap_content" android:text="생일 : "
+              android:layout_below="@id/sf_textview_nickname" android:layout_marginLeft="10dp"/>
+
+
+</RelativeLayout>
