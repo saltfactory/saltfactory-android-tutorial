@@ -3,10 +3,12 @@
 *.iws
 .idea/
 local.properties
+**/*.so
 
 # Generic Android ignores
 bin/
 target
 gen/
+samples
 
 
