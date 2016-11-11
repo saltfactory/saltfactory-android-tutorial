@@ -1,34 +1,29 @@
 package net.saltfactory.tutorial.fcmdemo;
 
+/**
+ * 채팅방에 사용될 메세지 클래스
+ */
 public class Message {
     /**
-     * The content of the message
+     * 실제 메세지 내용
      */
     String message;
     /**
-     * boolean to determine, who is sender of this message
+     * 나의 메세지 인지 상대방의 메세지 인지를 구분 하는 구분자
      */
     boolean isMine;
     /**
-     * boolean to determine, whether the message is a status message or not.
-     * it reflects the changes/updates about the sender is writing, have entered text etc
+     * 메세지 상태
      */
     boolean isStatusMessage;
 
-    /**
-     * Constructor to make a Message object
-     */
     public Message(String message, boolean isMine) {
         super();
         this.message = message;
         this.isMine = isMine;
         this.isStatusMessage = false;
     }
-    /**
-     * Constructor to make a status Message object
-     * consider the parameters are swaped from default Message constructor,
-     *  not a good approach but have to go with it.
-     */
+
     public Message(boolean status, String message) {
         super();
         this.message = message;

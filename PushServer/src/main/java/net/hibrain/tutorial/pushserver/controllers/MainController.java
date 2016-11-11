@@ -52,7 +52,9 @@ public class MainController {
     }
 
     /**
-     * 데이터베이스에 가지고 있는 모든 디바이스 토큰을 대상으로 메세지를 보내는 메소드
+     * 사용자로부터 reciver 정보를 가지는 메세지를 전송하도록 요청하는 메소드
+     * 안드로이드로 부터 전송할 메세지는 JSON 형태로 넘어오는데 이것은 Map으로 매핑이된다
+     * JSON 의 형태는 {"receiver":"수신자", "message":"메세지"} 와 같은 형태로 들어오게 된다.
      *
      * @return
      */
@@ -69,15 +71,15 @@ public class MainController {
 
         String username = (String) params.get("reciever");
         String chatMessage = (String) params.get("message");
-        User user = userDao.getUserByUsername(username);
+        User user = userDao.getUserByUsername(username); // 메세지 전송을 위해 수신자 정보를 데이터베이스에서 조회하여 수신자의 디바이스 토큰을 획득한다.
 
         Message message = new Message();
-        message.setTo(user.getToken());
-        message.setNotification(new Notification("테스트메세지", chatMessage));
+        message.setTo(user.getToken()); // 데이터베이스에서 획득한 수신자 토큰 정보를 FCM 푸시를 요청하는 JSON에 추가한다.
+        message.setNotification(new Notification("테스트메세지", chatMessage)); // 송신자로 부터 받은 메세지를 FCM 푸시 요청아는 JSON에 추가한다.
 
 
         HttpEntity<Message> entity = new HttpEntity<Message>(message, headers);
-        String result = restTemplate.postForObject(GCM_SERVER_URL, entity, String.class);
+        String result = restTemplate.postForObject(GCM_SERVER_URL, entity, String.class); // FCM HTTP connection Sever로 푸시 전송을 요청한다
         results.add(result);
 
         return results;

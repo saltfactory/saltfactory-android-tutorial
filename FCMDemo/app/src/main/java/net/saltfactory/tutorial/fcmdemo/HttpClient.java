@@ -18,19 +18,41 @@ import static com.google.android.gms.internal.zzs.TAG;
  * Created by saltfactory on 12/11/2016.
  */
 
+/**
+ * 안드로이드에서 푸시 서버로 데이터를 전송하는 HTTP 클라이언트 클래스
+ */
 public class HttpClient {
 
     private final String SERVER_URL = "http://192.168.1.100:8080";
 
+    /**
+     * 푸시서버로 사용자의 정보와 token 정보를 전송
+     * @param json
+     * @return
+     * @throws IOException
+     */
     public String saveToken(JSONObject json) throws IOException {
         return this.sendJSON("/users/save", json);
     }
 
 
+    /**
+     * 푸시버서로 체팅을 위해 수신자로 메세지 전달을 요청
+     * @param json
+     * @return
+     * @throws IOException
+     */
     public String sendMessage(JSONObject json) throws IOException {
         return this.sendJSON("/messages/send", json);
     }
 
+    /**
+     * HTTP 요청을 처리하는 메소드
+     * @param URL
+     * @param json
+     * @return
+     * @throws IOException
+     */
     public String sendJSON(String URL , JSONObject json) throws IOException {
         HttpURLConnection conn;
 

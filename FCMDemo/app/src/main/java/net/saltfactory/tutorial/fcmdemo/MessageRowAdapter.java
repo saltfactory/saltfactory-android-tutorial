@@ -17,6 +17,10 @@ import java.util.ArrayList;
  */
 
 
+/**
+ * 채팅메소드를 채팅방에 스크롤 가능하고 말풑선 형태로 보여주기 위한 클래스이다
+ * 채팅에 사용한 총 Message 배열을 조작하여 isMine 정보로 내 말풍선, 상대 말풍선을 다르게 표헌한다
+ */
 public class MessageRowAdapter extends BaseAdapter {
     private Context mContext;
     private ArrayList<Message> mMessages;
@@ -54,18 +58,17 @@ public class MessageRowAdapter extends BaseAdapter {
         holder.message.setText(message.getMessage());
 
         LayoutParams lp = (LayoutParams) holder.message.getLayoutParams();
-        //check if it is a status message then remove background, and change text color.
         if (message.isStatusMessage()) {
             holder.message.setBackgroundResource(0);
             lp.gravity = Gravity.LEFT;
             holder.message.setTextColor(ContextCompat.getColor(mContext, R.color.textFieldColor));
         } else {
-            //Check whether message is mine to show green background and align to right
+
             if (message.isMine()) {
                 holder.message.setBackgroundResource(R.drawable.speech_bubble_green);
                 lp.gravity = Gravity.RIGHT;
             }
-            //If not mine then it is from sender to show orange background and align to left
+
             else {
                 holder.message.setBackgroundResource(R.drawable.speech_bubble_orange);
                 lp.gravity = Gravity.LEFT;
