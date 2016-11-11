@@ -751,6 +751,55 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
 ![](http://hbn-blog-assets.s3.amazonaws.com/saltfactory/images/device-2016-11-10-175813.png) 
 
 
+## 푸시를 이용한 채팅 프로그램 추가 개발 사항
+
+위 예제는 하나의 디바이스 토큰 정보를 서버에 저장하고 서버에 저장한 토큰 정보를 이용해서 디바이스로 메세지를 보내는 예제이다.
+푸시를 이용한 채팅 프로그램을 개발하기 위해서는 두 사용자간의 디바이스 정보를 가지고 채팅을 할 수 있다.
+
+먼저 위 예제를 사용하여 단순하게 단방향으로 디바이스에 푸시를 보내는 개념도 이다.
+1. 디바이스 토큰 획득
+2. 디바이스 토큰 서버로 전송
+3. 디바이스 토큰 데이터베이스 저장
+4. 디바이스 토큰 정보로 FCM 푸시 요청
+5. FCM 메세지 디바이스로 푸시
+6. 메세지 수신 
+
+![](http://hbn-blog-assets.s3.amazonaws.com/saltfactory/images/android%20FCM%20chat.001.jpeg)
+
+만약 다른 사용자가 있다면 위의 순서와 동일하게 디바이스 토큰을 데이터베이스에 저장한다. 
+
+![](http://hbn-blog-assets.s3.amazonaws.com/saltfactory/images/android%20FCM%20chat.002.jpeg)
+
+단순히 디바이스 끼리 FCM을 가지고 메세지를 주고 받기 위해서는 다음과 같은 개념이 필요하다.
+1. 사용자 A가 B에게 메세지 전송 요청을 서버로 전송
+2. 서버는 데이터베이스에서 B의 디바이스 토큰을 조회
+3. B의 디바이스 토큰을 가지고 메세지와 사용자 A 정보와 함께 FCM에 푸시 요청
+4. FCM 메세지 디바이스로 푸시
+5. 메세지 수신 
+6. 안드로이드 채팅 뷰 갱신
+
+![](http://hbn-blog-assets.s3.amazonaws.com/saltfactory/images/android%20FCM%20chat.003.jpeg)
+
+좀더 복잡한 메세지를 주고 받기 위해서는 메세지 자체를 데이터베이스에 저장해야한다.
+1. 사용자 A가 B에게 메세지 전송 요청을 서버로 전송
+2. 서버는 A의 메세지를 데이터베이스에 저장
+3. A의 메세지 ID와 B의 토큰 정보를 조회
+4. 데이터베이스에 저장된 정보를 가지고 FCM으로 푸시 요청  
+5. FCM 메세지 사용자 B의 디바이스로 푸시
+6. 사용자 B 받은 메세지 ID를 가지고 서버에 실제 메세지 조회 요청
+7. 데이터베이스에 저장된 메세지 정보를 사용자 B 디바이스로 응답
+8. 안드로이드 채팅 뷰 갱신
+
+
+![](http://hbn-blog-assets.s3.amazonaws.com/saltfactory/images/android%20FCM%20chat.004.jpeg)
+
+
+
+
+
+
+
+
 # 참고 
 
 - https://developers.google.com/cloud-messaging/http
