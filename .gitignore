@@ -9,4 +9,5 @@ bin/
 target
 gen/
 backup
+.DS_Store
 

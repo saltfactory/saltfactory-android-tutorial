@@ -7,7 +7,3 @@
 /build
 /captures
 .externalNativeBuild
-buld/
-out/
-gradle/
-*google-services.json

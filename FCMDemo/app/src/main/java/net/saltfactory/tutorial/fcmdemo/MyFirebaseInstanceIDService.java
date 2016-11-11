@@ -30,58 +30,25 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
 
         // TODO: Implement this method to send any registration to your app's servers.
         // 안드로이드 앱이 구동하면 실제 토큰을 획득하게 되는데 획득한 토큰을 푸시 서버로 전송하는 메소드를 추가 구현해야한다.
+        sendRegistrationToServer(refreshedToken);
+    }
+
+    private void sendRegistrationToServer(String token) {
+        JSONObject json = new JSONObject();
+        HttpClient httpClient = new HttpClient();
+
         try {
-            sendRegistrationToServer(refreshedToken);
+            json.put("username", "userA");
+            json.put("token", token);
+
+            httpClient.saveToken(json);
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
     }
 
-    private void sendRegistrationToServer(String token) throws JSONException, IOException {
-        // 푸시서버로 token을 전송하는 코드 추가
-        HttpURLConnection conn    = null;
-
-        OutputStream os   = null;
-        InputStream is   = null;
-        ByteArrayOutputStream baos = null;
-
-        URL url = new URL("http://서버주소:8080/tokens/save");
-        conn = (HttpURLConnection)url.openConnection();
-        conn.setRequestMethod("POST");
-        conn.setRequestProperty("Cache-Control", "no-cache");
-        conn.setRequestProperty("Content-Type", "application/json");
-        conn.setRequestProperty("Accept", "application/json");
-        conn.setDoOutput(true);
-        conn.setDoInput(true);
-
-        JSONObject json = new JSONObject();
-        json.put("token", token);
-
-        os = conn.getOutputStream();
-        os.write(json.toString().getBytes());
-        os.flush();
-
-        String response;
-
-        int responseCode = conn.getResponseCode();
-
-        if(responseCode == HttpURLConnection.HTTP_OK) {
-
-            is = conn.getInputStream();
-            baos = new ByteArrayOutputStream();
-            byte[] byteBuffer = new byte[1024];
-            byte[] byteData = null;
-            int nLength = 0;
-            while((nLength = is.read(byteBuffer, 0, byteBuffer.length)) != -1) {
-                baos.write(byteBuffer, 0, nLength);
-            }
-            byteData = baos.toByteArray();
-
-            response = new String(byteData);
-
-            Log.i(TAG, "DATA response = " + response);
-        }
-    }
 }

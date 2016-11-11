@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">FCMDemo</string>
     <string name="action_settings">Settings</string>
+    <string name="main_empty_list">There is no recent conversation, write new message
+		to start one.</string>
+
 </resources>

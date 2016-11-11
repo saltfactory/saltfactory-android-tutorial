@@ -1,5 +1,7 @@
 package net.saltfactory.tutorial.fcmdemo;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -21,5 +23,17 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // message, here is where that should be initiated. See sendNotification method below.
         Log.d(TAG, "From: " + remoteMessage.getFrom());
         Log.d(TAG, "Notification Message Body: " + remoteMessage.getNotification().getBody());
+        updateMyActivity(getApplicationContext(), remoteMessage.getNotification().getBody());
+    }
+
+    public void updateMyActivity(Context context, String message) {
+
+        Intent intent = new Intent("messageReciver");
+
+        //put whatever data you want to send, if any
+        intent.putExtra("message", message);
+
+        //send broadcast
+        context.sendBroadcast(intent);
     }
 }

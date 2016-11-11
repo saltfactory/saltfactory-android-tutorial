@@ -24,5 +24,6 @@ dist/
 nbdist/
 .nb-gradle/
 out/
+build/
 gradle/
 test.db
